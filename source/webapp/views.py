@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView
 from webapp.models import User, Article, Comment, Rating
 
-class ArticlesListView(ListView):
+class ArticleListView(ListView):
     model = Article
     template_name = 'article_list.html'
 

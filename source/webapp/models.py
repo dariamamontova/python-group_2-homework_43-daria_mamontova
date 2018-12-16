@@ -13,7 +13,7 @@ class User(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=200, verbose_name='Заголовок')
     text = models.TextField(max_length=2000, verbose_name='Текст')
-    author = models.ForeignKey(User, on_delete=models.PROTECT, verbose_name='Автор')
+    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='article_author', verbose_name='Автор')
 
     def __str__(self):
         return self.title
