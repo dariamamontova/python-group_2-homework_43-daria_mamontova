@@ -28,3 +28,22 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.title
+
+class Rating(models.Model):
+    RATE_AWFUL = 'awful'
+    RATE_BAD = 'bad'
+    RATE_NORMAL = 'normal'
+    RATE_GOOD = 'good'
+    RATE_EXCELLENT = 'excellent'
+
+    RATE_CHOICES = (
+        (RATE_AWFUL, 'Ужасно'),
+        (RATE_BAD, 'Плохо'),
+        (RATE_NORMAL, 'Нормально'),
+        (RATE_GOOD, 'Хорошо'),
+        (RATE_EXCELLENT, 'Отлично')
+    )
+
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='user', verbose_name='Пользователь')
+    article = models.ForeignKey(Article, on_delete=models.PROTECT, related_name='rate_article', verbose_name='Статья')
+    rate = models.CharField(max_length=20, choices=RATE_CHOICES, blank=True, null=True, verbose_name="Оценка")
