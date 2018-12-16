@@ -7,7 +7,7 @@ class User(models.Model):
     favorites = models.ManyToManyField('Article', blank=True, related_name='favored_by', verbose_name='Избранное')
 
     def __str__(self):
-        return "%s. %s" % (self.name, self.last_name)
+        return "%s %s" % (self.name, self.last_name)
 
 
 class Article(models.Model):
@@ -18,4 +18,13 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
+class Comment(models.Model):
+    title = models.CharField(max_length=100, verbose_name='Заголовок')
+    text = models.TextField(max_length=5000, verbose_name='Текст')
+    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='comment_author', verbose_name='Автор')
+    article = models.ForeignKey(Article, on_delete=models.PROTECT, related_name='comment_article', verbose_name='Статья')
+    answer = models.ForeignKey('self', on_delete=models.PROTECT, blank=True, null=True, related_name='comment_answer', verbose_name='Ответ')
 
+
+    def __str__(self):
+        return self.title
