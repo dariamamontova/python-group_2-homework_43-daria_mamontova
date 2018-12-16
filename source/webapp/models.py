@@ -25,7 +25,6 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.PROTECT, related_name='comment_article', verbose_name='Статья')
     answer = models.ForeignKey('self', on_delete=models.PROTECT, blank=True, null=True, related_name='comment_answer', verbose_name='Ответ')
 
-
     def __str__(self):
         return self.title
 
@@ -47,3 +46,7 @@ class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='user', verbose_name='Пользователь')
     article = models.ForeignKey(Article, on_delete=models.PROTECT, related_name='rate_article', verbose_name='Статья')
     rate = models.CharField(max_length=20, choices=RATE_CHOICES, blank=True, null=True, verbose_name="Оценка")
+
+    def __str__(self):
+        return "%s, %s" % (self.pk, self.rate)
+
