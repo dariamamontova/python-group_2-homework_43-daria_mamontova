@@ -12,7 +12,8 @@
     {% for article in article_list %}
         <h4><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h4>
         <p>{{ article.author }}</p>
-        <hr>
-    </div>
+        <p><a href="{% url 'article_update' article.pk %}">Редактировать</a></p>
+
     {% endfor %}
+    </div>
 {% endblock %}
