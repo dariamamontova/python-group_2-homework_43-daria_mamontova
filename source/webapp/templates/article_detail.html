@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Статья{% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.author }}</p>
+    <p>{{ article.text }}</p>
+    <h5>Комментарии</h5>
+    {% for comment in article.comment_article.all %}
+        <p>{{ comment.title }} ({{ comment.text }})</p>
+    {% endfor %}
+    <h5>Оценки</h5>
+    {% for rating in article.rate_article.all %}
+        <p>{{ rating.rate }} {{ rating.user }}</p>
+    {% endfor %}
+
+{% endblock %}

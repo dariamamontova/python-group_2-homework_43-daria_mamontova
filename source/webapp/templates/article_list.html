@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Статьи{% endblock %}
+{% block content %}
+    {% for article in article_list %}
+        <h4><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h4>
+        <p>{{ article.author }}</p>
+        <hr>
+    {% endfor %}
+{% endblock %}

@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Избранные статьи{% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <h1>{{ user.name }} {{ user.last_name }}</h1>
+    <p>Почта: {{ user.email }}</p>
+    <h5>Статьи пользователя:</h5>
+    {% for favorites in user.favorites.all %}
+        <p>{{ favorites.title }}</p>
+    {% endfor %}
+
+{% endblock %}
