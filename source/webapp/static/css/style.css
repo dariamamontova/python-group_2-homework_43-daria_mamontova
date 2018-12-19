@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    background: cornsilk;
+    color: #5e6472;
+}
+
+.article_list a {
+    text-decoration: none;
+    color: darkred;
+}
+
+.article_list a:hover {
+    color: #1d2124;
+}
+
+.btn_edit a {
+    text-decoration: none;
+    color: white;
+}
+
+.title {
+    text-decoration: none;
+    background: #5e6472;
+    color: whitesmoke;
+}
+
+a {
+    text-decoration: none;
+}
+
+h4 a {
+    color: #5e6472;
+}
+
+h4 a:hover {
+    color: black;
+}

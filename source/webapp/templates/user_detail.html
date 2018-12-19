@@ -3,12 +3,15 @@
 
 {% block content %}
     <h1>{{ user.name }} {{ user.last_name }}</h1>
-    <p>Почта: {{ user.email }}</p>
+    <h5>Почта: {{ user.email }}</h5>
+    <div class="p-3 my-3 title">
     <h5>Статьи пользователя:</h5>
+    </div>
     {% for article in user.article_author.all %}
-        <p>{{ article.title }}</p>
+        <h4><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h4>
     {% endfor %}
 
     <h4><a href="{% url 'favorites_detail' user.pk %}">Посмотреть избранные статьи пользователя</a></h4>
+
 
 {% endblock %}
