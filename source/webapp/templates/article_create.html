@@ -7,6 +7,6 @@
     <form action="{% url 'article_create' %}" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <button type="submit" class="btn btn-dark">Сохранить</button>
     </form>
 {% endblock %}
